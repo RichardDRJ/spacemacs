@@ -36,3 +36,16 @@
   (spacemacs/groovy-load-file)
   (switch-to-groovy nil)
   (evil-insert-state))
+
+(defun spacemacs//groovy-setup-backend ()
+  "Conditionally setup Groovy backend."
+  (pcase groovy-backend
+    (`lsp (spacemacs//groovy-setup-lsp))
+    (t nil)))
+
+(defun spacemacs//groovy-setup-lsp ()
+  "Setup Groovy LSP."
+  (if (configuration-layer/layer-used-p 'lsp)
+      (progn
+        (lsp))
+    (message "`lsp' layer is not installed, please add `lsp' layer to your dotfile.")))

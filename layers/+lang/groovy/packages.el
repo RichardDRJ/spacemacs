@@ -34,6 +34,7 @@
     :defer t
     :init
     (progn
+      (add-hook 'groovy-mode-local-vars-hook #'spacemacs//groovy-setup-backend)
       (spacemacs/declare-prefix-for-mode 'groovy-mode "ms" "REPL")
       (spacemacs/set-leader-keys-for-major-mode 'groovy-mode
         "'"  'run-groovy
